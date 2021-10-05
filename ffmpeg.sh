@@ -1,7 +1,7 @@
 set -e
 
 upload() {
-gdrive upload --share ${o} | tail -1 | cut -d " " -f 7 > up.txt
+gdrive upload --share ${o} | grep http* | cut -d " " -f 7 > up.txt
 up=$(cat up.txt)
 bash ~/tele*/tele* -M "[${o}](${up})"
 }
@@ -28,12 +28,18 @@ read -p "Input: " i
 read -p "Output: " o
 echo
 
+if [ -z "$i" -o -z "$o" ]; then
+       echo No input or output found
+       echo
+       exit 1
+fi
+
 [ "$1" == "1" ] && low
 
 [ "$1" == "2" ] && high
 
 if [ -n "$1" ]; then
-        echo "Invalid command. Exiting..."
+        echo "Invalid quality. Exiting..."
         echo
         exit 1
 fi
