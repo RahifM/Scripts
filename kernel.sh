@@ -9,10 +9,11 @@ success() {
 	cd $AK3
 	rm -rf Image.gz-dtb
 	rm -rf *.zip
-    cp $KIMG $AK3
-    zip -r9 mido-$(date +'%Y%m%d-%H%M').zip * -x .git README.md *placeholder
-    $TG -f $ZIP "$(cat $KDIR/out/include/generated/uts* | cut -d " " -f 2-)"$'\n'$'\n'"$(cat $KDIR/out/include/generated/comp*h | grep gcc* | cut -d " " -f 2-)"
-	rm $LOG
+	cp $KIMG $AK3
+	zip -r9 mido-$(cat $KDIR/out/include/generated/uts* | cut -d '"' -f 2 | cut -d "." -f -2)-$(date +'%Y%m%d-%H%M').zip * -x .git README.md *placeholder
+	$TG -f $ZIP "$(cat $KDIR/out/include/generated/uts* | cut -d '"' -f 2)"$'\n'$'\n'"$(cat $KDIR/out/include/generated/comp*h | grep LINUX_COMPILER | cut -d '"' -f 2)"
+	$TG -f $LOG
+        rm $LOG
 }
 
 failed() {
