@@ -7,30 +7,23 @@ bash ~/tele*/tele* -M "[${o}](${up})"
 }
 
 low() {
-echo 720p
-echo
+echo -e "\n720p\n"
 time ffmpeg -v error -stats -i "${i}" -map 0 -s hd720 -c:v libx265 -x265-params log-level=error -crf 25 -sn -pix_fmt yuv420p10le -preset slow -ac 2 -c:a libopus -b:a 96k -pass 1 -abr 800 -vbr on "${o}"
 }
 
 high() {
-echo 1080p
-echo
+echo -e "\n1080p\n"
 time ffmpeg -v error -stats -i "${i}" -map 0 -s hd1080 -c:v libx265 -x265-params log-level=error -crf 23 -sn -pix_fmt yuv420p10le -preset slow -ac 2 -c:a libopus -b:a 128k -pass 1 -abr 1200 -vbr on "${o}"
 }
 
-echo
-echo "... Welcome :) ..."
-echo
+echo -e "\n... Welcome :) ...\n"
 
-echo "Please set input and input!"
-echo
+echo -e "Please set input and input!\n"
 read -p "Input: " i
 read -p "Output: " o
-echo
 
 if [ -z "$i" -o -z "$o" ]; then
-       echo No input or output found
-       echo
+       echo -e "\nNo input or output found\n"
        exit 1
 fi
 
@@ -39,17 +32,14 @@ fi
 [ "$1" == "2" ] && high
 
 if [ -n "$1" ]; then
-        echo "Invalid quality. Exiting..."
-        echo
+        echo -e "\nInvalid quality. Exiting...\n"
         exit 1
 fi
 
-echo "Warning: Quality not set. Using default"
-echo
+echo -e "\nWarning: Quality not set. Using default"
 low
 
 # Upload that shit and lemme know :)
 
-echo
-echo "Uploading..."
+echo -e "\nUploading...\n"
 [ ! -d ${o} ] && upload && echo Uploading done || echo Failed Upload
