@@ -1,9 +1,6 @@
 #!/bin/bash
 
-echo
-echo "Starting update"
-echo
-sudo apt update && sudo apt upgrade -y
-echo
-echo "Update done"
-echo
+set -e
+
+echo -e "\nStarting update\n"
+sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && echo -e "\nUpdate done\n" || echo -e "\nUpdate Failed\n"
