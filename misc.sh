@@ -2,7 +2,7 @@
 
 git config --global user.name RahifM
 git config --global user.email rahifmanjatha372@gmail.com
-
+git config --global core.editor vim
 git config --global alias.b 'branch'
 git config --global alias.c 'commit'
 git config --global alias.cp 'cherry-pick'
