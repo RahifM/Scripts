@@ -15,4 +15,5 @@ git config --global alias.r 'revert'
 git config --global alias.rh 'reset --hard'
 git config --global alias.rr 'revert --no-edit'
 git config --global alias.s 'status'
+git config --global alias.rmv 'remote -v'
 git config --global credential.helper store
