@@ -16,4 +16,7 @@ git config --global alias.rh 'reset --hard'
 git config --global alias.rr 'revert --no-edit'
 git config --global alias.s 'status'
 git config --global alias.rmv 'remote -v'
+git config --global alias.rma 'remote add'
+git config --global alias.rmd 'remote remove'
+git config --global alias.pl 'pull'
 git config --global credential.helper store
