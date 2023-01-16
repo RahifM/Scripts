@@ -21,21 +21,18 @@ git config --global alias.rmd 'remote remove'
 git config --global alias.pl 'pull'
 git config --global credential.helper store
 
-# Termux alias
-PTH=/data/data/com.termux/files/usr/etc/bash.bashrc
-if [ -f "$PTH" ]; then
+TPTH=/data/data/com.termux/files/usr/etc/bash.bashrc
+if [ -f "$TPTH" ]; then
         echo Termux path found
-        CHKR="$(grep 'alias*' $PTH)"
+        CHKR="$(grep 'alias*' $TPTH)"
         if [ "$CHKR" == "" ]; then
                 echo Changes does not exist, Adding...
-cat <<'EOF' >> $PTH
+cat <<'EOF' >> $TPTH
 
-# custom alias to make life ez
-alias c='clear'
-alias l='ls'
-alias la='ls -a'
-alias ll='ls -l'
-
+# Custom aliases
+if [ -f ~/.bash_aliases ]; then
+   . ~/.bash_aliases
+fi
 EOF
                 echo Added changes successfully
         else
@@ -44,4 +41,18 @@ EOF
 else
         echo Termux path not found
 fi
-# Termux alias
+
+PTH=~/.bash_aliases
+if [ -f "$PTH" ]; then
+        echo bash_aliases already exist
+else
+        echo Adding aliases
+        touch $PTH
+cat <<'EOF' >> $PTH
+# custom alias to make life ez
+alias c='clear'
+alias l='ls'
+alias la='ls -a'
+alias ll='ls -l'
+EOF
+fi
