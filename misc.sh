@@ -20,6 +20,7 @@ git config --global alias.rma 'remote add'
 git config --global alias.rmd 'remote remove'
 git config --global alias.pl 'pull'
 git config --global credential.helper store
+git config --global --add --bool push.autoSetupRemote true
 
 TPTH=/data/data/com.termux/files/usr/etc/bash.bashrc
 if [ -f "$TPTH" ]; then
