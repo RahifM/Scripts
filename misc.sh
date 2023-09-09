@@ -18,11 +18,13 @@ git config --global alias.pl 'pull'
 git config --global alias.rh 'reset --hard'
 git config --global alias.r 'revert --no-edit'
 git config --global alias.s 'status'
+git config --global alias.sw 'switch'
 git config --global alias.rf 'reflog'
 git config --global alias.rmv 'remote -v'
 git config --global alias.rma 'remote add'
 git config --global alias.rmd 'remote remove'
 git config --global credential.helper store
+git config --global pull.rebase false
 git config --global --add --bool push.autoSetupRemote true
 
 TPTH=/data/data/com.termux/files/usr/etc/bash.bashrc
